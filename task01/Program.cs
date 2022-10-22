@@ -19,13 +19,13 @@ double[,] CreateArray(int m, int n)
     {
         for (int col = 0; col < n; col++)
         {
-            a[row, col] = RandomDouble(-10, 10);
+            a[row, col] = GetRandomDouble(-10, 10);
         }
     }
     return a;
 }
 
-double RandomDouble(int min, int max)
+double GetRandomDouble(int min, int max)
 {
     double value = new double();
     Random rnd = new Random();
