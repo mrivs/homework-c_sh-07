@@ -8,47 +8,39 @@
 (row ,colum - входные данные)
 /*/
 
-double[,] array = CreateArray(4, 4);
-PrintArray(array);
+int[,] array = CreateMatrix(4, 4);
+PrintMatrix(array);
 
 int row = PrintAndGetValue("Введите строку");
 int colum = PrintAndGetValue("Введите столбец");
 
-double value = new double();
+
 if (row >= 0 && row < array.GetLength(0) && colum >= 0 && colum < array.GetLength(1))
     Console.WriteLine(array[row, colum]);
 else
     Console.WriteLine("такого числа в массиве нет");
 
-double[,] CreateArray(int m, int n)
+int[,] CreateMatrix(int m, int n)
 {
-    double[,] a = new double[m, n];
+    int[,] array = new int[m, n];
+    Random rnd=new Random();
     for (int row = 0; row < m; row++)
     {
         for (int col = 0; col < n; col++)
         {
-            a[row, col] = GetRandomDouble(0, 10);
+            array[row, col] = rnd.Next(0, 10);
         }
     }
-    return a;
+    return array;
 }
 
-double GetRandomDouble(int min, int max)
-{
-    double value = new double();
-    Random rnd = new Random();
-    value = rnd.Next(min, max) + rnd.NextDouble();
-    value = Math.Round(value, 1);
-    return value;
-}
-
-void PrintArray(double[,] array)
+void PrintMatrix(int[,] array)
 {
     for (int row = 0; row < array.GetLength(0); row++)
     {
         for (int col = 0; col < array.GetLength(1); col++)
         {
-            Console.Write($"{array[row, col]}\t");
+            Console.Write($"{array[row, col]}   ");
         }
         Console.WriteLine();
     }

@@ -9,10 +9,10 @@ m = 3, n = 4.
 
 int m = PrintAndGetValue("Введите кол-во строк");
 int n = PrintAndGetValue("Введите кол-во столбцов");
-double[,] array = CreateArray(m, n);
-PrintArray(array);
+double[,] array = CreateMatrix(m, n);
+PrintMatrix(array);
 
-double[,] CreateArray(int m, int n)
+double[,] CreateMatrix(int m, int n)
 {
     double[,] a = new double[m, n];
     for (int row = 0; row < m; row++)
@@ -34,7 +34,7 @@ double GetRandomDouble(int min, int max)
     return value;
 }
 
-void PrintArray(double[,] array)
+void PrintMatrix(double[,] array)
 {
     for (int row = 0; row < array.GetLength(0); row++)
     {
