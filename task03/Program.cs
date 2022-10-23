@@ -10,35 +10,32 @@
 /*/
 int[,] matrix = CreateMatrix(3, 4);
 PrintMatrix(matrix);
-Console.WriteLine();
-Console.WriteLine(PrintArrayOfDouble(SRA(matrix)));
+Console.WriteLine(PrintArrayOfDouble(AverageOfColumns(matrix)));
 
-double[] SRA(int[,] array)
+double[] AverageOfColumns(int[,] array) // 
 {
-    double[] sr = new double[array.GetLength(1)];
+    double[] average = new double[array.GetLength(1)];
     for (int row = 0; row < array.GetLength(0); row++)
     {
         for (int col = 0; col < array.GetLength(1); col++)
         {
-            sr[col] = sr[col] + array[row, col];
+            average[col] = average[col] + array[row, col];
         }
-
     }
-    for (int i = 0; i < sr.Length; i++)
+    for (int i = 0; i < average.Length; i++)
     {
-        sr[i] = sr[i] / array.GetLength(0);
-        sr[i] = Math.Round(sr[i], 2);
+        average[i] = average[i] / array.GetLength(0);
+        average[i] = Math.Round(average[i], 2);
     }
 
-    return sr;
+    return average;
 }
-
 string PrintArrayOfDouble(double[] array) // пишем массив double в строку
 {
     string str = "Среднее арифметическое каждого столбца: "+string.Join("; ",array)+".";
     return str;
 }
-int[,] CreateMatrix(int m, int n)
+int[,] CreateMatrix(int m, int n) // создаем матрицу
 {
     int[,] array = new int[m, n];
     Random rnd = new Random();
@@ -51,13 +48,13 @@ int[,] CreateMatrix(int m, int n)
     }
     return array;
 }
-void PrintMatrix(int[,] array)
+void PrintMatrix(int[,] array) // отображаем матрицу
 {
     for (int row = 0; row < array.GetLength(0); row++)
     {
         for (int col = 0; col < array.GetLength(1); col++)
         {
-            Console.Write($"{array[row, col]}\t");
+            Console.Write($"{array[row, col]}  ");
         }
         Console.WriteLine();
     }

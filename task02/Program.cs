@@ -9,21 +9,30 @@
 /*/
 
 int[,] array = CreateMatrix(4, 4);
+int[] index = new int[2];
 PrintMatrix(array);
 
-int row = PrintAndGetValue("Введите строку");
-int colum = PrintAndGetValue("Введите столбец");
+index[0] = PrintAndGetValue("Введите строку");
+index[1] = PrintAndGetValue("Введите столбец");
 
+if (CheckIndex(array, index)) Console.WriteLine(array[index[0], index[1]]);
+else Console.WriteLine("такого числа в массиве нет");
 
-if (row >= 0 && row < array.GetLength(0) && colum >= 0 && colum < array.GetLength(1))
-    Console.WriteLine(array[row, colum]);
-else
-    Console.WriteLine("такого числа в массиве нет");
+bool CheckIndex(int[,] array, int[] index)
+{
+    if (index[0] >= 0
+        && index[0] < array.GetLength(0)
+        && index[1] >= 0
+        && index[1] < array.GetLength(1))
+        return true;
+    else { return false; }
+}
+
 
 int[,] CreateMatrix(int m, int n)
 {
     int[,] array = new int[m, n];
-    Random rnd=new Random();
+    Random rnd = new Random();
     for (int row = 0; row < m; row++)
     {
         for (int col = 0; col < n; col++)
